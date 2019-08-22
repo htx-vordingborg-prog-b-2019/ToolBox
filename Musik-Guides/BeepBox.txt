@@ -1,0 +1,6 @@
+Hej, og velkommen til denne guide om hvordan du bruger BeepBox.
+OBS: Dette er ikke en guide til programmering, men en guide til hvordan man nemt kan lave musik til sit spil.
+Spoiler alert: Jeg kan ikke lære dig hvordan du laver musik, det lærer man med trial and error, eller ved lære af musik-teori.
+
+Til at starte med, skal du åbne din browser, her foreslår jeg Google Chrome, da det har jeg oplevet er det mest stabile ved brug af dette program.
+Når du har åbnet din fane i Chrome,
