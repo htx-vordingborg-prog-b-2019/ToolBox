@@ -1,25 +1,27 @@
 import time
 
-x = int(input("Hvor mange minutter skal der gå? "))
-y = int(input("Hvor mange sekunder skal der gå? "))
+#inputs til timeren
+minuter = int(input("Hvor mange minutter skal der gå? "))
+sekunder = int(input("Hvor mange sekunder skal der gå? "))
 print('__________________________________________________________________')
 
-def countdown(p,q):
-    i=p
-    j=q
-    k=0
+#her defineres funktionen, hvor at den skal bruge parametrene minuter og sekunder
+def countdown(minuter,sekunder):
+    nul=0 #variablen nul defineres som tallet 0
     while True:
-        if(j==-1):
-            j=59
-            i -=1
-        if(j > 9):
-            print(str(k)+str(i)+":"+str(j), end="\r")
+        if(sekunder==-1):
+            sekunder=59
+            minuter -=1
+        if(sekunder > 9): #hvis der er mere end 9 sekunder tilbage
+            print(str(nul)+str(minuter)+":"+str(sekunder), end="\r") #ex 01:10
         else:
-            print(str(k)+str(i)+":"+str(k)+str(j), end="\r")
+            print(str(nul)+str(minuter)+":"+str(nul)+str(sekunder), end="\r") #ex 01:09
         time.sleep(1)
-        j -= 1
-        if(i==0 and j==-1):
+        sekunder -= 1
+        if(minuter==0 and sekunder==-1):
             break
-    if(i==0 and j==-1):
+    if(minuter==0 and sekunder==-1):
         time.sleep(0)
-countdown(x,y) #countdown(min,sec)
+
+#her køres funktionen
+countdown(minuter,sekunder)
