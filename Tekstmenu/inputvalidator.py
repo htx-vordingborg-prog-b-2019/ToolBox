@@ -2,7 +2,7 @@ def getValidatedInput(besked, muligheder):
     """Denne funktion sikrer at brugerens indtastning er en af de specificerede
     mulige lovlige indtastninger ved hjælp af rekursion.
     Funktionen modtager en introduktion, en besked og en liste af muligheder
-    og returnerer
+    og returnerer brugerens valg.
 
     Parametre:
     besked - Besked til brugeren
