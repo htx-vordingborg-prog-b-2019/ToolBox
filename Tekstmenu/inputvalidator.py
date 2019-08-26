@@ -1,5 +1,8 @@
 def getValidatedInput(besked, muligheder):
-    """Denne funktion modtager en introduktion, en besked og en liste af muligheder.
+    """Denne funktion sikrer at brugerens indtastning er en af de specificerede
+    mulige lovlige indtastninger ved hjælp af rekursion.
+    Funktionen modtager en introduktion, en besked og en liste af muligheder
+    og returnerer brugerens valg.
 
     Parametre:
     besked - Besked til brugeren
@@ -18,5 +21,5 @@ def getValidatedInput(besked, muligheder):
         ind = getValidatedInput(besked, muligheder)
     return ind
 
-if __name__== '__main__':
+if __name__ == '__main__':
     print(getValidatedInput('Vælg en', ['A', 'B', 'C']))
