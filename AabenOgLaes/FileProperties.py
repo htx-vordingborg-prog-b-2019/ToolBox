@@ -4,32 +4,18 @@ class FileProperties(object):
     def __init__(self, filename):
         self.filename = filename
 
-    def readFileAsRead(self):
+    def readFileAsString(self):
         file = open(self.filename, "r")
         content = file.read()
         file.close()
         return content
 
-    def readFileAsReadlines(self, removeSpace=False):
+    def readFileAsList(self):
         file = open(self.filename, "r")
         content = file.read()
         file.close()
 
-        print(content)
-
         content = content.split()
-
-        """if(removeSpace == False):
-            for e in range(len(content)):
-                content[e] = content[e].strip("\n")
-        else:
-            for e in range(len(content)):
-                content[e] = content[e].strip("\n")
-                content[e] = content[e].split()
-            for e in content:
-                print(e)
-                #content = e.split()
-"""
 
         return content
 
@@ -48,5 +34,5 @@ class FileProperties(object):
 
 if __name__ == "__main__":
 
-    print(FileProperties("test.txt").readFileAsRead())
-    print(FileProperties("test.txt").readFileAsReadlines(True))
+    print(FileProperties("test.txt").readFileAsString())
+    print(FileProperties("test.txt").readFileAsList())
