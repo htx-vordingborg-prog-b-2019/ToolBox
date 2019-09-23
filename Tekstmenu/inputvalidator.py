@@ -14,7 +14,7 @@ def getValidatedInput(besked, muligheder):
         intro = intro + m + ' '
     intro = intro + '\n'
     # Modtag input fra brugren
-    ind = input(intro + besked + ' ')
+    ind = input(intro + besked + '')
     # Kontroller om indtastning er lovlig,
     # ellers kald denne funktion igen med samme parametre
     if ind not in muligheder:
@@ -22,4 +22,4 @@ def getValidatedInput(besked, muligheder):
     return ind
 
 if __name__ == '__main__':
-    print(getValidatedInput('Vælg en', ['A', 'B', 'C']))
+    print(getValidatedInput('Vælg en\n', ['ABBA', 'B', 'C']))
