@@ -1,5 +1,5 @@
 #Læs alt indhold i en fil
-def readFileAsString(filename):
+def readFile(filename):
     file = open(filename, "r")
     content = file.read()
     file.close()
@@ -19,7 +19,7 @@ def readFileAsList(filename):
 def createFile(filename):
     file = open(filename, "x")
 
-#Skriv til en fil (Det skrevet indhold (content) bliver placeret bagerst i filen)
+#Skriv til en fil. Det skrevet indhold (content) bliver placeret bagerst i filen.
 def writeToFile(filename, content):
     file = open(filename, "a")
     file.write(content)
@@ -33,6 +33,8 @@ def overwriteToFile(filename, content):
 
 if __name__ == "__main__":
 
-    #                       "Filnavn"
-    print(readFileAsString("test.txt"))
+    #              "filename"
+    print(readFile("test.txt"))
     print(readFileAsList("test.txt"))
+#               "filename"   "content"  
+    writeToFile("hol.txt", "Hej med dig!")
