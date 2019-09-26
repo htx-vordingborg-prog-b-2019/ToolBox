@@ -1,38 +1,40 @@
-import re
+#Læs alt indhold i en fil
+def readFile(filename):
+    file = open(filename, "r")
+    content = file.read()
+    file.close()
+    return content
 
-class FileProperties(object):
-    def __init__(self, filename):
-        self.filename = filename
+#Læs alt indhold i en fil, som en liste.
+def readFileAsList(filename):
+    file = open(filename, "r")
+    content = file.read()
+    file.close()
 
-    def readFileAsString(self):
-        file = open(self.filename, "r")
-        content = file.read()
-        file.close()
-        return content
+    content = content.split()
 
-    def readFileAsList(self):
-        file = open(self.filename, "r")
-        content = file.read()
-        file.close()
+    return content
 
-        content = content.split()
+#Lav en fil
+def createFile(filename):
+    file = open(filename, "x")
 
-        return content
+#Skriv til en fil. Det skrevet indhold (content) bliver placeret bagerst i filen.
+def writeToFile(filename, content):
+    file = open(filename, "a")
+    file.write(content)
+    file.close()
 
-    def createFile(self):
-        file = open(self.filename, "x")
-
-    def writeToFile(self, content):
-        file = open(self.filename, "a")
-        file.write(content)
-        file.close()
-
-    def overwriteToFile(self, content):
-        file = open(self.filename, "w")
-        file.write(content)
-        file.close()
+#Erstat alt i filen, som bliver skrevet i content
+def overwriteToFile(filename, content):
+    file = open(filename, "w")
+    file.write(content)
+    file.close()
 
 if __name__ == "__main__":
 
-    print(FileProperties("test.txt").readFileAsString())
-    print(FileProperties("test.txt").readFileAsList())
+    #              "filename"
+    print(readFile("test.txt"))
+    print(readFileAsList("test.txt"))
+#               "filename"   "content"  
+    writeToFile("hol.txt", "Hej med dig!")
