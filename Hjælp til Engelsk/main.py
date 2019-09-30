@@ -1,4 +1,6 @@
 from PyDictionary import PyDictionary
 dictionary = PyDictionary()
-print(dictionary.meaning("House"))
-print(dictionary.meaning)
+word = dictionary.meaning("House")
+for key in word.items() :
+    print (key)
+
