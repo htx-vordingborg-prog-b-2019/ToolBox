@@ -18,13 +18,9 @@ else:
     #Hvis siden ikke er oppe, så bliver der sagt at linket ikke er oppe og hvad dens status code er
     print("The status code of", brugerLink , "is", LixText.status_code)
 
-<<<<<<< HEAD
 
 def dataFil():
     dataName = input("hvad skal filen som du gemmer hede?\n")
     f = open(dataName + ".txt")
     f.write(t)
     f.close()
-=======
-#Denne del nedenunder, er optional, den tager den text som du har fået fra din side, og laver den om til en fil.
->>>>>>> 161217d313bb5f3545a5f726bd5b8acb2163d703
