@@ -1,5 +1,4 @@
 import requests
-import
 #Her importerer vi requests, som er et biblotek som kan håndtere at hente data fra en givent side
 
 brugerLink = input("Hvilket link vil du have data fra?\n")
