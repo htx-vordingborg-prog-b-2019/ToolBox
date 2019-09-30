@@ -3,7 +3,7 @@ pygame.init()
 
  # dette er bare en test for at vi kan lære pygame at kende
 size = width, height = 1080, 500
-speed = [2, 2]
+speed = [1, 1]
 black = 0, 0, 0
 
 screen = pygame.display.set_mode(size)
