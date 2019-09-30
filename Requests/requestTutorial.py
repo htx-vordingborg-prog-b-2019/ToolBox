@@ -8,8 +8,8 @@ LixText = requests.get(brugerLink)
 #Her importerer vi en side og definerer det til at være "LixText", men det er bare en variabel navn
 
 def dataFil():
-    dataName = input("hvad skal filen som du gemmer hede?\n")
-    f = open(dataName + ".txt")
+    dataName = str(input("hvad skal filen som du gemmer hede?\n"))
+    f = open(dataName + ".txt", "w")
     f.write(t)
     f.close()
 
@@ -19,7 +19,9 @@ if LixText.status_code == 200:
     t = LixText.text
     #Så bliver teksten printet
     print(t)
-    dataFil()
+    choice = input("Har du lyst til at gemme filen?(Y/N) ")
+    if choice == "Y":
+        dataFil()
 else:
     #Hvis siden ikke er oppe, så bliver der sagt at linket ikke er oppe og hvad dens status code er
     print("The status code of", brugerLink , "is", LixText.status_code)
