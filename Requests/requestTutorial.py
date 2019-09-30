@@ -1,4 +1,5 @@
 import requests
+import
 #Her importerer vi requests, som er et biblotek som kan håndtere at hente data fra en givent side
 
 brugerLink = input("Hvilket link vil du have data fra?\n")
@@ -16,3 +17,10 @@ if LixText.status_code == 200:
 else:
     #Hvis siden ikke er oppe, så bliver der sagt at linket ikke er oppe og hvad dens status code er
     print("The status code of", brugerLink , "is", LixText.status_code)
+
+
+def dataFil():
+    dataName = input("hvad skal filen som du gemmer hede?\n")
+    f = open(dataName + ".txt")
+    f.write(t)
+    f.close()
