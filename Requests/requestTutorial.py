@@ -1,4 +1,5 @@
 import requests
+import
 #Her importerer vi requests, som er et biblotek som kan håndtere at hente data fra en givent side
 
 brugerLink = input("Hvilket link vil du have data fra?\n")
@@ -21,4 +22,9 @@ else:
     statusCode = ["200 OK = You shouldn't be seeing this unless the code is broken, which means the link works", "201 Created = Fulfilled and resulted in a new resource being created.","204 No Content = The server succesfully processed the request, but is not returning any content","304 Not Modified = Resource has been modified since last visit.","400 Bad Request = The request cannot be fulfilled due to bad syntax.","401 Unauthorized = Request requires user authentication","403 Forbidden = The request was a legal request, but the server is refusing to respond to it","404 Not Found = The server has not found anything matching the Request-URI", "409 Conflict = The request could not be completed due to a conflict with the current state of the resource", "500 Internal Server Error = The server encountered an unexpected condition which prevented it from fulfilling the request."]
     print(indent+"200")
 
-#Denne del nedenunder, er optional, den tager den text som du har fået fra din side, og laver den om til en fil.
+
+def dataFil():
+    dataName = input("hvad skal filen som du gemmer hede?\n")
+    f = open(dataName + ".txt")
+    f.write(t)
+    f.close()
