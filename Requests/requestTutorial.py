@@ -16,5 +16,9 @@ if LixText.status_code == 200:
 else:
     #Hvis siden ikke er oppe, så bliver der sagt at linket ikke er oppe og hvad dens status code er
     print("The status code of", brugerLink , "is", LixText.status_code)
+    #Vi printer også hvad de top 10 status koder betyder, så folk ved hvad der sker
+    indent = "  -  "
+    statusCode = ["200 OK = You shouldn't be seeing this unless the code is broken, which means the link works", "201 Created = Fulfilled and resulted in a new resource being created.","204 No Content = The server succesfully processed the request, but is not returning any content","304 Not Modified = Resource has been modified since last visit.","400 Bad Request = The request cannot be fulfilled due to bad syntax.","401 Unauthorized = Request requires user authentication"]
+    print(indent+"200")
 
 #Denne del nedenunder, er optional, den tager den text som du har fået fra din side, og laver den om til en fil.
