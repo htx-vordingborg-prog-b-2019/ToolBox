@@ -16,3 +16,5 @@ if LixText.status_code == 200:
 else:
     #Hvis siden ikke er oppe, så bliver der sagt at linket ikke er oppe og hvad dens status code er
     print("The status code of", brugerLink , "is", LixText.status_code)
+
+#Denne del nedenunder, er optional, den tager den text som du har fået fra din side, og laver den om til en fil.
