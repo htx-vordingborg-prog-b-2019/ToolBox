@@ -25,7 +25,7 @@ class game:
         car(self)
 
     def car(self,x,y):
-        screen.blit(car1,(x,y))
+        screen.blit(self.car1,(x,y))
         self.pygame.display.update()
         gameloop(self)
 
@@ -49,7 +49,6 @@ class game:
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                         self.x_change = 0
-
         self.x += self.x_change
         #dette skaber en fejl nedenunder
         screen.fill(self.black)
