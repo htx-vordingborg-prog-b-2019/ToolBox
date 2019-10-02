@@ -53,9 +53,14 @@ class game():
                         self.x_change = 0
             self.x += self.x_change
             self.gd.fill(self.black)
+            k.carLoad(self.x,self.y)
             self.clock.tick(60)
             pygame.display.update()
+        while 1:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: sys.exit()
 
-game()
-pygame.quit()
-quit()
+k = game()
+k.gameLoop()
+#pygame.quit()
+#quit()

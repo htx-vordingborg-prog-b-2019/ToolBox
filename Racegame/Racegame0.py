@@ -51,6 +51,9 @@ def gameLoop():
         clock.tick(60)
         pygame.display.update()
 
+    while 1:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT: sys.exit()
 gameLoop()
-pygame.quit()
-quit()
+#pygame.quit()
+#quit()
