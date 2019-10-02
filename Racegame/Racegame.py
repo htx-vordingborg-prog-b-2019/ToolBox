@@ -24,13 +24,14 @@ class game():
         print('init')
         #car(self,x,y)
 
-    def car(self,x,y):
+
+    def carLoad(self,x,y):
         print('car start')
         self.gd.blit(self.car1,(x,y))
         pygame.display.update()
         print('car end')
 
-    def gameloop(self):
+    def gameLoop(self):
         print('gameloop')
         self.x_change = 0
         self.lead_y = 0
