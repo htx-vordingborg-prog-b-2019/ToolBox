@@ -5,36 +5,50 @@ pygame.init()
 
 class gameMec():
     def __init__(self):
-        print('gameloop')
-        self.x_change = 0
+        self.xChange = 0
         self.lead_y = 0
-        self.x = 300
-        self.y = 490
+        self.xCar = 300
+        self.yCar = 490
         self.block = 10
-        self.game_over = False
-        self.V = Visuals()
+        self.gameOver = False
+        self.gV = gameVisuals()
+        self.gd = gV.gd
+
+    def genericMessage(self,size,message,color2,x,y):
+        self.font = pygame.font.SysFont(None,size)
+        self.screenText = self.font.render(message,True,color2)
+        self.gd.blit(self.screenText, (x, y))
+
+    def genericButton(self,x,y,message,color1,color2):
+        self.mousePos = pygame.mouse.get_cursor()
+        self.mouseClick = pygame.mouse.get_pressed()
+        if self.mousePos > self.x and self.mousePos < self.x+100:
+
+        pygame.draw.rect(self.gd, color1, [x, y, 100, 40])
+        gM.genericMessage(55,message,color2,x,y)
+        pygame.display.update()
 
     def gameLoop(self):
-        while self.game_over == False:
+        while self.gameOver == False:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                    self.game_over = True
+                    self.gameOver = True
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
-                        self.x_change = -self.block
+                        self.Xchange = -self.block
                     elif event.key == pygame.K_RIGHT:
-                        self.x_change = +self.block
+                        self.Xchange = +self.block
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                        self.x_change = 0
-            self.x += self.x_change
-            self.V.carLoad(self.x,self.y)
+                        self.Xchange = 0
+            self.xCar += self.Xchange
+            self.gV.carLoad(self.xCar,self.yCar)
             pygame.display.update()
         while 1:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: sys.exit()
 
-class Visuals():
+class gameVisuals():
     def __init__(self):
         #her indsætter vi farver i rbg
         self.grey = (110, 110, 110)
@@ -52,12 +66,17 @@ class Visuals():
         self.car_image = pygame.image.load('Bil.png')
         self.car1 = pygame.transform.scale(self.car_image, (100,100))
         self.clock = pygame.time.Clock()
+        self.gameOver = False
 
-    def gameIntro():
-        #while k.
-        self.background = pygame.image.load('navn')
-        self.gd.blit(background, (0,0))
-        pygame.display.update()
+
+    def gameIntro(self):
+        while self.gameOver == False:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: sys.exit()
+            self.background = pygame.image.load('Placeholder.png')
+            self.gd.blit(self.background, (0,0))
+            gM.genericButton(350, 200,'PLAY', self.red, self.black)
+            pygame.display.update()
 
     def carLoad(self,x,y):
         self.gd.fill(self.black)
@@ -66,8 +85,7 @@ class Visuals():
         self.clock.tick(60)
 
 
-
-k = gameMec()
-k.gameLoop()
-#pygame.quit()
-#quit()
+gV = gameVisuals()
+gM = gameMec()
+gV.gameIntro()
+#gM.gameLoop()
