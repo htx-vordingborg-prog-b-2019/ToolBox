@@ -59,7 +59,7 @@ class gameMec():
 class Visuals():
     pass
     def gameIntro():
-        while k.
+        #while k.
         self.background = pygame.image.load('navn')
         self.gd.blit(background, (0,0))
         pygame.display.update()
