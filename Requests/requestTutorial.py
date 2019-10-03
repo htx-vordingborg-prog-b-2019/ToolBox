@@ -1,3 +1,14 @@
+"""
+requestTutorial er en skabelon til hvordan man kan hente og vise ens data. Det er et eksempel og kan laves på andre måder.
+
+Programmet her er beregnet til plain text!!!
+
+Meget kommenteret
+
+Lavet af Lukas 3.R og Simon Julendal 3.R
+Vi er næsten ligeså seje som McCool
+"""
+
 import requests
 #Her importerer vi requests, som er et biblotek som kan håndtere at hente data fra en givent side
 
