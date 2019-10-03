@@ -7,19 +7,17 @@ brugerLink = input("Hvilket link vil du have data fra?\n")
 LixText = requests.get(brugerLink)
 #Her importerer vi en side og definerer det til at være "LixText", men det er bare en variabel navn
 
-def dataFil():
-    dataName = str(input("hvad skal filen som du gemmer hede?\n"))
-    f = open(dataName + ".txt", "w")
-    f.write(t)
-    f.close()
-
 #Vi får testet om linkets status code er 200, som betyder at siden er oppe.
 if LixText.status_code == 200:
-    #Hvis siden er oppe, definerer den det som text som en variabel
+    #Hvis siden er oppe, definerer den det som text i en variabel
     t = LixText.text
     #Så bliver teksten printet
     print(t)
+
+    #Så har vi valgt at tilføje at man kan have lov til at gemme filen, hvis man har lyst.
+    #Det gøres ved at brugeren bliver spurgt om deres fil skal gemmes
     choice = input("Har du lyst til at gemme filen?(Y/N) ")
+    #hvis svaret så er ja, eller "Y", så sender den videre til dataFil() funktionen
     if choice == "Y":
         dataFil()
 else:
@@ -32,3 +30,12 @@ else:
     for i in statusCode:
         print(indent + statusCode[xd]+"\n")
         xd=xd+1
+
+'''
+Denne del er kun vigtigt hvis du vil have den til at downlaode
+'''
+def dataFil():
+    dataName = str(input("hvad skal filen som du gemmer hede?\n"))
+    f = open(dataName + ".txt", "w")
+    f.write(t)
+    f.close()
