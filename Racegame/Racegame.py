@@ -58,6 +58,24 @@ class gameMec():
 
 class Visuals():
     pass
+    def __init__(self):
+        #her indsætter vi farver i rbg
+        elf.grey = (110, 110, 110)
+        self.white = (255,255,255)
+        self.black = (0,0,0)
+        self.red = (200,0,0)
+        self.green = (0,200,0)
+        self.blue = (0,0,200)
+        self.bright_red = (255,0,0)
+        self.bright_green = (0,255,0)
+        self.bright_blue = (0,0,255)
+        #så displayer vi surfacet
+        self.size = window_width, window_hight = 800, 600
+        self.gd = pygame.display.set_mode(self.size)
+        self.car_image = pygame.image.load('Bil.png')
+        self.car1 = pygame.transform.scale(self.car_image, (100,100))
+        self.clock = pygame.time.Clock()
+
     def gameIntro():
         #while k.
         self.background = pygame.image.load('navn')
