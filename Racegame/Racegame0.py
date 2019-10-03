@@ -20,7 +20,7 @@ gd = pygame.display.set_mode(size)
 car_image = pygame.image.load('Bil.png')
 car1 = pygame.transform.scale(car_image, (100,100))
 clock = pygame.time.Clock()
-        #car(self,x,y)
+
 
 def carLoad(x,y):
     gd.blit(car1,(x,y))

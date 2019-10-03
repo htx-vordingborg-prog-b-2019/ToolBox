@@ -3,7 +3,7 @@ import time
 import random
 pygame.init()
 
-class game():
+class gameMec():
     def __init__(self):
         #her indsætter vi farver i rbg
         self.grey = (110, 110, 110)
@@ -21,15 +21,11 @@ class game():
         self.car_image = pygame.image.load('Bil.png')
         self.car1 = pygame.transform.scale(self.car_image, (100,100))
         self.clock = pygame.time.Clock()
-        print('init')
         #car(self,x,y)
 
-
     def carLoad(self,x,y):
-        print('car start')
         self.gd.blit(self.car1,(x,y))
         pygame.display.update()
-        print('car end')
 
     def gameLoop(self):
         print('gameloop')
@@ -60,7 +56,21 @@ class game():
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: sys.exit()
 
-k = game()
+class Visuals():
+    pass
+    def gameIntro():
+        while k.
+        self.background = pygame.image.load('navn')
+        self.gd.blit(background, (0,0))
+        pygame.display.update()
+
+    def carLoad(self,x,y):
+        self.gd.blit(self.car1,(x,y))
+        pygame.display.update()
+
+
+
+k = gameMec()
 k.gameLoop()
 #pygame.quit()
 #quit()
