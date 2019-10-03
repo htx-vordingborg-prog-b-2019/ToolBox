@@ -3,8 +3,6 @@ requestTutorial er en skabelon til hvordan man kan hente og vise ens data. Det e
 
 Programmet her er beregnet til plain text!!!
 
-Meget kommenteret
-
 Lavet af Lukas 3.R og Simon Julendal 3.R
 Vi er næsten ligeså seje som McCool
 """
