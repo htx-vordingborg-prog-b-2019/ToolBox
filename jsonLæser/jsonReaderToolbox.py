@@ -6,7 +6,7 @@ with open('hej.json', 'r', encoding="utf-8") as f:
 	liste_med_json = json.load(f)
 	#Her oprettes en liste der indeholder alle json-objekter fra filen, som dictionaries.
 	f.close()
-	#Husk at luk filen
+	#Husk at lukke filen
 
 
 print(liste_med_json[2]["name"])
