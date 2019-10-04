@@ -20,8 +20,9 @@ class gameMec():
         #en variabel der kalder på klassen gameVisuals
         self.gd = gV.gd
         #her kalder vi variablen gd som egentligt ligger i gameVisuals og derfor er der skravet gV foran
+        self.buttonCreation = False
 
-    def genericMessage(self,size,message,color1,color2,x,y):
+    def genericMessage(self,x,y,message,color1,color2,size):
         #her bruges der rigtigt mange parametrer som bruges senere i funktionen
         if self.buttonCreation == True:
         #her checker vi om buttonCreation er true for at finde ud af om vi skal lave tekst eller tekst til en knap
@@ -63,15 +64,18 @@ class gameMec():
         #her laver vi det samme som i genericMessage, altså chekker vi om musen kører over knappen
             pygame.draw.rect(self.gd, color2, [x, y, 100, 40])
             #her tegner vi en kasse med farve 2, x og y fra parameteret. Bredden og højden af kassen er fastsat til 100x40
-            gM.genericMessage(55,message,color1,color2,x,y)
+            gM.genericMessage(x,y,message,color1,color2,55)
             #Her skaber vi en besked til vores knap ved at kalde på genericMessage med parametrer og strørrelsen (size) er fastsat
             if self.mouseClick == (1,0,0):
                 onClick()
         else:
             pygame.draw.rect(self.gd, color1, [x, y, 100, 40])
-            gM.genericMessage(55,message,color1,color2,x,y)
+            gM.genericMessage(x,y,message,color1,color2,55)
         pygame.display.update()
         #opdatering
+
+    def quit():
+        sys.exit()
 
     def gameLoop(self):
         while self.gameOver == False:
@@ -118,13 +122,16 @@ class gameVisuals():
         self.gameOver = False
 
 
+
     def gameIntro(self):
         while self.gameOver == False:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: sys.exit()
-            self.background = pygame.image.load('Placeholder.png')
+            self.background = pygame.image.load('Baggrund.png')
             self.gd.blit(self.background, (0,0))
+            gM.genericMessage(350, 100,'Speed for need', self.red, self.black, 50)
             gM.genericButton(350, 200,'PLAY', self.red, self.black, gM.gameLoop)
+            gM.genericButton(350, 300,'QUIT', self.red, self.black, gM.quit)
             pygame.display.update()
 
     def carLoad(self,x,y):
