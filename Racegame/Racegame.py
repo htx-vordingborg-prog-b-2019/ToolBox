@@ -52,7 +52,7 @@ class gameMec():
             #her opdaterer vi vores display sådan så vi nu viser teksten, tegningen eller andet
 
 
-    def genericButton(self,x,y,message,color1,color2):
+    def genericButton(self,x,y,message,color1,color2,onClick):
         #igen er der mange parametrer som vi skal bruge i funktionen
         self.mousePos = pygame.mouse.get_pos()
         self.mouseClick = pygame.mouse.get_pressed() #ændre lokation?
@@ -60,12 +60,13 @@ class gameMec():
         #her sætter vi buttonCreation=sand. dette gøres fordi denne funktion kun bliver kaldt når vi laver en knap
         #og så kan genericMessage() se at vi laver en knaptekst
         if x<self.mousePos[0]<x+100 and y<self.mousePos[1]<y+40:
-        #her laver vi det samme som i genericMessage
-        #altså gør vi sådan så vores knap ændrer farve når musen kører over
+        #her laver vi det samme som i genericMessage, altså chekker vi om musen kører over knappen
             pygame.draw.rect(self.gd, color2, [x, y, 100, 40])
             #her tegner vi en kasse med farve 2, x og y fra parameteret. Bredden og højden af kassen er fastsat til 100x40
             gM.genericMessage(55,message,color1,color2,x,y)
             #Her skaber vi en besked til vores knap ved at kalde på genericMessage med parametrer og strørrelsen (size) er fastsat
+            if self.mouseClick == (1,0,0):
+                onClick()
         else:
             pygame.draw.rect(self.gd, color1, [x, y, 100, 40])
             gM.genericMessage(55,message,color1,color2,x,y)
@@ -84,13 +85,12 @@ class gameMec():
                         self.xChange = +self.block
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                        self.Xchange = 0
+                        self.xChange = 0
             self.xCar += self.xChange
             if self.xCar < 0:
                 self.xCar = 0
             elif self.xCar > 700:
                 self.xCar = 700
-            print(self.xCar)
             self.gV.carLoad(self.xCar,self.yCar)
             pygame.display.update()
         while 1:
@@ -124,7 +124,7 @@ class gameVisuals():
                 if event.type == pygame.QUIT: sys.exit()
             self.background = pygame.image.load('Placeholder.png')
             self.gd.blit(self.background, (0,0))
-            gM.genericButton(350, 200,'PLAY', self.red, self.black)
+            gM.genericButton(350, 200,'PLAY', self.red, self.black, gM.gameLoop)
             pygame.display.update()
 
     def carLoad(self,x,y):
