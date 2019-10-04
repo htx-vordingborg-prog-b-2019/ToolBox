@@ -10,6 +10,7 @@ Vi er næsten ligeså seje som McCool
 import requests
 #Her importerer vi requests, som er et biblotek som kan håndtere at hente data fra en givent side
 
+
 brugerLink = input("Hvilket link vil du have data fra?\n")
 #Vi gør det muligt at man kan bruge alle links, men denne del er ikke nødvendigt hvis man allerede har et link
 
