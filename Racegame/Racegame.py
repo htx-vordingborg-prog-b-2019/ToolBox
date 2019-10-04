@@ -14,18 +14,32 @@ class gameMec():
         self.gV = gameVisuals()
         self.gd = gV.gd
 
-    def genericMessage(self,size,message,color2,x,y):
+    def genericMessage(self,size,message,color1,color2,x,y):
         self.font = pygame.font.SysFont(None,size)
         self.screenText = self.font.render(message,True,color2)
         self.gd.blit(self.screenText, (x, y))
+        if self.buttonX<self.mousePos[0]<self.buttonX+100 and self.buttonY<self.mousePos[1]<self.buttonY+40:
+            self.font = pygame.font.SysFont(None,size)
+            self.screenText = self.font.render(message,True,color1)
+            self.gd.blit(self.screenText, (x, y))
+        else:
+            self.font = pygame.font.SysFont(None,size)
+            self.screenText = self.font.render(message,True,color2)
+            self.gd.blit(self.screenText, (x, y))
+
+
 
     def genericButton(self,x,y,message,color1,color2):
-        self.mousePos = pygame.mouse.get_cursor()
+        self.mousePos = pygame.mouse.get_pos()
         self.mouseClick = pygame.mouse.get_pressed()
-        if self.mousePos > self.x and self.mousePos < self.x+100:
-
-        pygame.draw.rect(self.gd, color1, [x, y, 100, 40])
-        gM.genericMessage(55,message,color2,x,y)
+        self.buttonX = x
+        self.buttonY = y
+        if self.buttonX<self.mousePos[0]<self.buttonX+100 and self.buttonY<self.mousePos[1]<self.buttonY+40:
+            pygame.draw.rect(self.gd, color2, [x, y, 100, 40])
+            gM.genericMessage(55,message,color1,color2,x,y)
+        else:
+            pygame.draw.rect(self.gd, color1, [x, y, 100, 40])
+            gM.genericMessage(55,message,color1,color2,x,y)
         pygame.display.update()
 
     def gameLoop(self):
