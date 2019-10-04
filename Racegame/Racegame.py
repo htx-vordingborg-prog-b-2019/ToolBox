@@ -22,26 +22,32 @@ class gameMec():
     def genericButton(self,x,y,message,color1,color2):
         self.mousePos = pygame.mouse.get_cursor()
         self.mouseClick = pygame.mouse.get_pressed()
-        if self.mousePos > self.x and self.mousePos < self.x+100:
+        #if self.mousePos > self.x and self.mousePos < self.x+100:
 
         pygame.draw.rect(self.gd, color1, [x, y, 100, 40])
         gM.genericMessage(55,message,color2,x,y)
         pygame.display.update()
 
     def gameLoop(self):
+        self.gameOver = False
         while self.gameOver == False:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     self.gameOver = True
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
-                        self.Xchange = -self.block
+                        self.xChange = -self.block
                     elif event.key == pygame.K_RIGHT:
-                        self.Xchange = +self.block
+                        self.xChange = +self.block
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-                        self.Xchange = 0
-            self.xCar += self.Xchange
+                        self.xChange = 0
+            self.xCar += self.xChange
+            if self.xCar < 0:
+                self.xCar = 0
+            if self.xCar > 700:
+                self.xCar = 700
+            print(self.xCar)
             self.gV.carLoad(self.xCar,self.yCar)
             pygame.display.update()
         while 1:
@@ -81,11 +87,11 @@ class gameVisuals():
     def carLoad(self,x,y):
         self.gd.fill(self.black)
         self.gd.blit(self.car1,(x,y))
-        pygame.display.update()
         self.clock.tick(60)
+        pygame.display.update()
 
 
 gV = gameVisuals()
 gM = gameMec()
-gV.gameIntro()
-#gM.gameLoop()
+#gV.gameIntro()
+gM.gameLoop()
