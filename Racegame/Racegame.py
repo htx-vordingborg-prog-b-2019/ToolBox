@@ -28,7 +28,6 @@ class gameMec():
             self.gd.blit(self.screenText, (x, y))
 
 
-
     def genericButton(self,x,y,message,color1,color2):
         self.mousePos = pygame.mouse.get_pos()
         self.mouseClick = pygame.mouse.get_pressed()
