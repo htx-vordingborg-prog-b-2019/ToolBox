@@ -67,6 +67,7 @@ class gameMec():
             gM.genericMessage(x,y,message,color1,color2,55)
             #Her skaber vi en besked til vores knap ved at kalde på genericMessage med parametrer og strørrelsen (size) er fastsat
             if self.mouseClick == (1,0,0):
+                self.startGame = True
                 onClick()
         else:
             pygame.draw.rect(self.gd, color1, [x, y, 100, 40])
@@ -96,7 +97,6 @@ class gameMec():
             elif self.xCar > 700:
                 self.xCar = 700
             self.gV.carLoad(self.xCar,self.yCar)
-            pygame.display.update()
         while 1:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: sys.exit()
@@ -114,7 +114,9 @@ class gameVisuals():
         self.bright_green = (0,255,0)
         self.bright_blue = (0,0,255)
         #så displayer vi surfacet
-        self.size = window_width, window_hight = 800, 600
+        self.window_width = 800
+        self.window_hight = 600
+        self.size = (self.window_width, self.window_hight)
         self.gd = pygame.display.set_mode(self.size)
         self.car_image = pygame.image.load('Bil.png')
         self.car1 = pygame.transform.scale(self.car_image, (100,100))
@@ -129,14 +131,30 @@ class gameVisuals():
                 if event.type == pygame.QUIT: sys.exit()
             self.background = pygame.image.load('Baggrund.png')
             self.gd.blit(self.background, (0,0))
-            gM.genericMessage(350, 100,'Speed for need', self.red, self.black, 50)
+            gM.genericMessage(self.window_width/2 -120, self.window_hight/6,'Speed for need', self.red, self.black, 50)
             gM.genericButton(350, 200,'PLAY', self.red, self.black, gM.gameLoop)
             gM.genericButton(350, 300,'QUIT', self.red, self.black, gM.quit)
             pygame.display.update()
 
+    def Load(self,loadName,x,y):
+        self.load = pygame.image.load(name)
+        self.gd.blit(self.load, (x,y))
+
+    def gameback(self):
+        self.gras=pygame.image.load('Placeholder.png')
+        self.gd.blit(self.gras, (0,0))
+        self.gd.blit(self.gras, (700,0))
+        pygame.display.update()
+
+
     def carLoad(self,x,y):
-        self.gd.fill(self.black)
+        self.gd.fill(self.grey)
+        if gM.startGame == True:
+            gV.gameback()
+        if gM.xCar < 100 or gM.xCar > 600:
+            gV.gameback()
         self.gd.blit(self.car1,(x,y))
+        pygame.display.update()
         self.clock.tick(60)
         pygame.display.update()
 
