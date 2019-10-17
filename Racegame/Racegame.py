@@ -2,6 +2,7 @@ import pygame
 import time
 import random
 pygame.init()
+from random import randint
 
 class gameMec():
     def __init__(self):
@@ -49,9 +50,6 @@ class gameMec():
             self.gd.blit(self.screenText, (x, y))
             #her laver vi igen bare noget tekst, forskellen er at dette tekst ikke er beregnet til at være
             #i en knap, derfor kan det ikke skifte farve når musen kører hen over
-            pygame.display.update()
-            #her opdaterer vi vores display sådan så vi nu viser teksten, tegningen eller andet
-
 
     def genericButton(self,x,y,message,color1,color2,onClick):
         #igen er der mange parametrer som vi skal bruge i funktionen
@@ -72,8 +70,6 @@ class gameMec():
         else:
             pygame.draw.rect(self.gd, color1, [x, y, 100, 40])
             gM.genericMessage(x,y,message,color1,color2,55)
-        pygame.display.update()
-        #opdatering
 
     def quit():
         sys.exit()
@@ -97,9 +93,14 @@ class gameMec():
             elif self.xCar > 700:
                 self.xCar = 700
             self.gV.carLoad(self.xCar,self.yCar)
+            if gV.yOther > gV.window_hight+50:
+                gV.yOther = 0
+            self.gV.otherCar(gV.yOther)
+            gV.yOther += 10
         while 1:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: sys.exit()
+
 
 class gameVisuals():
     def __init__(self):
@@ -135,26 +136,36 @@ class gameVisuals():
             gM.genericButton(350, 200,'PLAY', self.red, self.black, gM.gameLoop)
             gM.genericButton(350, 300,'QUIT', self.red, self.black, gM.quit)
             pygame.display.update()
-
-    def Load(self,loadName,x,y):
-        self.load = pygame.image.load(name)
-        self.gd.blit(self.load, (x,y))
+            self.yOther = 0
 
     def gameback(self):
-        self.gras=pygame.image.load('Placeholder.png')
-        self.gd.blit(self.gras, (0,0))
-        self.gd.blit(self.gras, (700,0))
-        pygame.display.update()
+        self.grass = pygame.image.load('Placeholder.png')
+        self.grassScaled = pygame.transform.scale(self.grass, (100,600))
+        self.gd.blit(self.grassScaled, (0,0))
+        self.gd.blit(self.grassScaled, (700,0))
 
+    def otherCar(self,y):
+        if gV.yOther == 0:
+            self.dice = random.randint(1,2)
+            if self.dice == 1:
+                self.newCar = pygame.image.load('Placeholder.png')
+                self.newCarScaled = pygame.transform.scale(self.newCar, (100,100))
+            elif self.dice == 2:
+                self.newCar = pygame.image.load('Placeholder.png')
+                self.newCarScaled = pygame.transform.scale(self.newCar, (100,100))
+            self.x = random.randint(100,600)
+        self.gd.blit(self.newCarScaled,(self.x,y))
+        pygame.display.update()
 
     def carLoad(self,x,y):
         self.gd.fill(self.grey)
         if gM.startGame == True:
             gV.gameback()
-        if gM.xCar < 100 or gM.xCar > 600:
+        elif gM.xCar < 100:
+            gV.gameback()
+        elif gM.xCar > 600:
             gV.gameback()
         self.gd.blit(self.car1,(x,y))
-        pygame.display.update()
         self.clock.tick(60)
         pygame.display.update()
 
