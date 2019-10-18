@@ -97,9 +97,17 @@ class gameMec():
                 gV.yOther = 0
             self.gV.otherCar(gV.yOther)
             gV.yOther += 10
+            gM.carCrash(self.xCar,self.gV.xCheck,gV.yOther)
         while 1:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: sys.exit()
+
+    def carCrash(self,carX,otherX,otherY):
+        if otherY > 400 and carX < otherX + 100 < carX + 150:
+            #if otherX + 100 > carX + 100 > otherX:
+            #    print('1')
+            #    if otherX > carX + 100 > otherX + 100:
+                    print('crashed')
 
 
 class gameVisuals():
@@ -137,6 +145,7 @@ class gameVisuals():
             gM.genericButton(350, 300,'QUIT', self.red, self.black, gM.quit)
             pygame.display.update()
             self.yOther = 0
+            self.xOther = 0
 
     def gameback(self):
         self.grass = pygame.image.load('Placeholder.png')
@@ -153,8 +162,9 @@ class gameVisuals():
             elif self.dice == 2:
                 self.newCar = pygame.image.load('Placeholder.png')
                 self.newCarScaled = pygame.transform.scale(self.newCar, (100,100))
-            self.x = random.randint(100,600)
-        self.gd.blit(self.newCarScaled,(self.x,y))
+            self.xOther = random.randint(100,600)
+            self.xCheck = self.xOther
+        self.gd.blit(self.newCarScaled,(self.xOther,y))
         pygame.display.update()
 
     def carLoad(self,x,y):
