@@ -8,7 +8,6 @@ class gameMec():
     def __init__(self):
         self.xChange = 0
         #xChange er en potentiel ændring i x koordinatet
-        #self.lead_y = 0 ???????
         self.xCar = 300
         #bilens x koordinat
         self.yCar = 490
@@ -22,6 +21,7 @@ class gameMec():
         self.gd = gV.gd
         #her kalder vi variablen gd som egentligt ligger i gameVisuals og derfor er der skravet gV foran
         self.buttonCreation = False
+        self.buttonPause = False
 
     def genericMessage(self,x,y,message,color1,color2,size):
         #her bruges der rigtigt mange parametrer som bruges senere i funktionen
@@ -104,10 +104,12 @@ class gameMec():
 
     def carCrash(self,carX,otherX,otherY):
         if otherY > 400 and carX < otherX + 100 < carX + 150:
-            #if otherX + 100 > carX + 100 > otherX:
-            #    print('1')
-            #    if otherX > carX + 100 > otherX + 100:
-                    print('crashed')
+            gM.genericMessage(gV.window_width/2 -120, gV.window_hight/6,'CRASHED', gV.black, gV.red, 50)
+            pygame.display.update()
+            time.sleep(2)
+            gV.gameIntro()
+
+    def startAll(self):
 
 
 class gameVisuals():
@@ -117,11 +119,6 @@ class gameVisuals():
         self.white = (255,255,255)
         self.black = (0,0,0)
         self.red = (200,0,0)
-        self.green = (0,200,0)
-        self.blue = (0,0,200)
-        self.bright_red = (255,0,0)
-        self.bright_green = (0,255,0)
-        self.bright_blue = (0,0,255)
         #så displayer vi surfacet
         self.window_width = 800
         self.window_hight = 600
@@ -131,8 +128,6 @@ class gameVisuals():
         self.car1 = pygame.transform.scale(self.car_image, (100,100))
         self.clock = pygame.time.Clock()
         self.gameOver = False
-
-
 
     def gameIntro(self):
         while self.gameOver == False:
@@ -146,6 +141,9 @@ class gameVisuals():
             pygame.display.update()
             self.yOther = 0
             self.xOther = 0
+            #print(gM.startGame)
+            #gM.startGame = False
+            #print(gM.startGame)
 
     def gameback(self):
         self.grass = pygame.image.load('Placeholder.png')
